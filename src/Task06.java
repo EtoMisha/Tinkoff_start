@@ -5,30 +5,11 @@ public class Task06 {
         Scanner scanner = new Scanner(System.in);
 
         int qty = scanner.nextInt();
-//        int qty = 7;
-
         Graph graph = new Graph();
-//        graph.addEdge(2, 6);
-//        graph.addEdge(5, 6);
-//        graph.addEdge(2, 5);
-//        graph.addEdge(2, 2);
-//        graph.addEdge(6, 8);
-//        graph.addEdge(2, 2);
-//        graph.addEdge(0, 2);
-//        graph.addEdge(0, 5);
-
-//        graph.addEdge(0, 2);
-//        graph.addEdge(2, 5);
-//        graph.addEdge(2, 6);
-//        graph.addEdge(5, 8);
-//        graph.addEdge(8, 9);
-//        graph.addEdge(6, 7);
-//        graph.addEdge(7, 8);
 
         for (int i = 0; i < qty; i++) {
             int num1 = scanner.nextInt();
             int num2 = scanner.nextInt();
-
             graph.addEdge(num1, num2);
         }
 
@@ -51,11 +32,11 @@ class Graph {
         public Vertex(int value) {
             this.value = value;
         }
-//
-//        @Override
-//        public String toString() {
-//            return String.valueOf(value);
-//        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
 
         @Override
         public boolean equals(Object o) {
@@ -88,12 +69,12 @@ class Graph {
         adj.get(vertex).add(new Vertex(value2));
     }
 
-//    void print() {
-//        for (Vertex vertex : adj.keySet()) {
-//            System.out.print(vertex.toString() + adj.get(vertex) + "   ");
-//        }
-//        System.out.println();
-//    }
+    void print() {
+        for (Vertex vertex : adj.keySet()) {
+            System.out.print(vertex.toString() + adj.get(vertex) + "   ");
+        }
+        System.out.println();
+    }
 
     public int getMaxDistance() {
         searchRec(start);
@@ -107,11 +88,9 @@ class Graph {
      * Не успеваю переделать, пусть хотя бы так работает :)
      */
     void searchRec(Vertex start) {
-//        System.out.println("-- start " + start);
         adj.get(start).sort(Vertex::compareTo);
 
         for (Vertex vertex : adj.get(start)) {
-//            System.out.println("start " + start.distance + ", vertex " + vertex.distance);
             if (vertex.equals(start)) {
                 start.distance++;
             }
@@ -120,7 +99,6 @@ class Graph {
                 if (vertex.distance > maxDistance) {
                     maxDistance = vertex.distance;
                 }
-//                System.out.println(start + "->" + vertex + " " + vertex.distance);
 
                 if (adj.get(vertex) != null && !vertex.equals(start)) {
                     searchRec(vertex);
