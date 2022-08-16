@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Task04 {
@@ -7,11 +5,7 @@ public class Task04 {
     private static Scanner scanner;
 
     public static void main(String[] args) {
-        try {
-            scanner = new Scanner(new File("resources/config.conf"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        scanner = new Scanner(System.in);
 
         parseBlock(new HashMap<>());
         scanner.close();

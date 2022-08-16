@@ -73,6 +73,7 @@ class Trie {
      */
     public int findPrefix(String prefix, int index) {
         TrieNode current = root;
+        counter = 0;
 
         for (int i = 0; i < prefix.length(); i++) {
             char ch = prefix.charAt(i);

@@ -5,7 +5,7 @@ public class Task06 {
         Scanner scanner = new Scanner(System.in);
 
         int qty = scanner.nextInt();
-        Graph graph = new Graph();
+        Graph2 graph = new Graph2();
 
         for (int i = 0; i < qty; i++) {
             int num1 = scanner.nextInt();
@@ -13,14 +13,13 @@ public class Task06 {
             graph.addEdge(num1, num2);
         }
 
-//        graph.print();
         System.out.println(graph.getMaxDistance());
 
         scanner.close();
     }
 }
 
-class Graph {
+class Graph2 {
     private final Map<Vertex, List<Vertex>> adj;
     private int maxDistance;
     private final Vertex start;
@@ -58,7 +57,7 @@ class Graph {
         }
     }
 
-    Graph() {
+    Graph2() {
         this.start = new Vertex(0);
         this.adj = new HashMap<>();
     }
@@ -67,13 +66,6 @@ class Graph {
         Vertex vertex = new Vertex(value1);
         adj.computeIfAbsent(vertex, k -> new ArrayList<>());
         adj.get(vertex).add(new Vertex(value2));
-    }
-
-    void print() {
-        for (Vertex vertex : adj.keySet()) {
-            System.out.print(vertex.toString() + adj.get(vertex) + "   ");
-        }
-        System.out.println();
     }
 
     public int getMaxDistance() {
